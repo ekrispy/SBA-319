@@ -1,27 +1,22 @@
 const express = require("express");
-const{createRestaurant, getAllRestaurants, getSingleRestaurant, deleteRestaurant, updateRestaurant, seedRestaurants} = require('../Controllers/restaurantController.js')
+const {
+  getAllReviews,
+  getSingleReview,
+  createNewReview,
+  deleteReview,
+  updateReview,
+  seedReviews,
+} = require("../Controllers/reviewscontroller");
+
 const router = express.Router();
-// const restaurants = require('../Db/restaurants.js');
 
+router.get("/", getAllReviews);
+router.get("/seed", seedReviews);
 
-// Get all restaurants
-router.get("/", getAllRestaurants);
+router.get("/:id", getSingleReview);
+router.post("/", createNewReview);
 
-// seed data for a new restaurant
-router.get("/seed", seedRestaurants);
-
-// Get a single restaurant
-router.get("/:id", getSingleRestaurant);
-
-// Create a new restaurant
-router.post("/", createRestaurant);
-
-
-
-// Delete a restaurant
-router.delete("/:id", deleteRestaurant);
-
-// Update a restaurant
-router.patch("/:id", updateRestaurant);
+router.delete("/:id", deleteReview);
+router.patch("/:id", updateReview);
 
 module.exports = router;
