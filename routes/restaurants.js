@@ -1,34 +1,18 @@
 const express = require("express");
+const{createRestaurant, getAllRestaurants, getSingleRestaurant, deleteRestaurant, updateRestaurant} = require('../Controllers/restaurantController.js')
 const router = express.Router();
 // const restaurants = require('../Db/restaurants.js');
 const Restaurants = require("../models/restaurants.js");
+
+
 // Get all restaurants
-router.get("/", (req, res) => {
-  // await Restaurants.find({});
-  res.json({ message: "Get all restaurants" });
-});
+router.get("/", getAllRestaurants);
 
 // Get a single restaurant
-router.get("/:id", (req, res) => {
-  res.json({ message: "Get a single restaurant" });
-});
+router.get("/:id", getSingleRestaurant);
 
 // Create a new restaurant
-router.post("/", async (req, res) => {
-  const { id, name, address, cuisine, description } = req.body;
-  try {
-    const newRestaurant = await Restaurants.create({
-      id,
-      name,
-      address,
-      cuisine,
-      description,
-    });
-    res.status(201).json(newRestaurant);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
+router.post("/", createRestaurant);
 
 // Create a new restaurant
 router.get("/seed", async (req, res) => {
@@ -42,13 +26,9 @@ router.get("/seed", async (req, res) => {
 });
 
 // Delete a restaurant
-router.delete("/:id", (req, res) => {
-  res.json({ message: "Delete a restaurant" });
-});
+router.delete("/:id", deleteRestaurant);
 
 // Update a restaurant
-router.patch("/:id", (req, res) => {
-  res.json({ message: "Update a restaurant" });
-});
+router.patch("/:id", updateRestaurant);
 
 module.exports = router;
