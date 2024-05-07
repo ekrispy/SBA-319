@@ -1,28 +1,31 @@
-const express = require('express');
+const express = require("express");
+const {
+  getAllHappyHourMenus,
+  getSingleHappyHourMenu,
+  createHappyHourMenu,
+  deleteHappyHourMenu,
+  updateHappyHourMenu,
+  seedHappyHourMenu,
+} = require("../Controllers/HappyHourMenuController.js");
 const router = express.Router();
-// const restaurants = require('../Db/resturants.js');
+// const restaurants = require('../Db/restaurants.js');
 
-//get all restaurtants
-router.get('/', (req, res) => {
-        res.json({mssg: 'get all resturants'});
-    });
+// Get all restaurants
+router.get("/", getAllHappyHourMenus);
 
-// get single restuarant
-router.get('/:id', (req,res)=>{
-    res.json({mssg: 'get a single resturant'})
-});
+// seed data for a new restaurant
+router.get("/seed", seedHappyHourMenu);
 
-//post new workout
-router.post('/', (req, res) => {
-    res.json({mssg: 'post new workout'});
-});
-// delete a workout
-router.delete('/:id', (req,res)=>{
-    res.json({mssg: 'delete a workout'})
-});
-// update a workout
-router.patch('/:id', (req,res)=>{
-    res.json({mssg: 'update a  resturant'})
-});
+// Get a single restaurant
+router.get("/:id", getSingleHappyHourMenu);
 
-module.exports = router
+// Create a new restaurant
+router.post("/", createHappyHourMenu);
+
+// Delete a restaurant
+router.delete("/:id", deleteHappyHourMenu);
+
+// Update a restaurant
+router.patch("/:id", updateHappyHourMenu);
+
+module.exports = router;

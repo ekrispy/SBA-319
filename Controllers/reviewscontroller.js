@@ -43,7 +43,7 @@ const getSingleRestaurant = async (req, res) => {
 //create a new restaurant
 
 const createRestaurant = async (req, res) => {
-    const { name, address, cuisine, description } = req.body;
+    const { id, name, address, cuisine, description } = req.body;
     // add doc to db
     try {
       const newRestaurant = await Restaurants.create({
