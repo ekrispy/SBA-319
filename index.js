@@ -3,7 +3,6 @@ const app = express();
 
 const mongoose = require('mongoose');
 
-// import mongoose from ('mongoose');
 
 require("dotenv").config();
 const restaurants = require("./routes/restaurants.js");
@@ -19,7 +18,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   res.send(
-    "Welcome! If you want to access any of the routes, please use the URL: /users, /meals, or /comments"
+    "Welcome! If you want to access any of the routes, please use the URL: /restaurants, /reviews, or /happyhour"
   );
 });
 
@@ -31,7 +30,7 @@ app.use("/api/happyhour", HappyHour);
 mongoose.connect(process.env.Atlas_URI)
  .then(() => {
     // Listen for requests
-    const port = process.env.PORT || 3000; // default port if env var is not set
+    const port = process.env.PORT || 3000; // default port if PORT is not set
     app.listen(port, () => {
       console.log(`App listening at http://localhost:${port}`);
     });
@@ -40,7 +39,5 @@ mongoose.connect(process.env.Atlas_URI)
     console.error(`Error connecting to DB: ${error.message}`); // log error with message
     process.exit(1); // exit with error code if DB connection fails
   });
-// app.listen(process.env.PORT, () => {
-//   console.log("Server started on port 4000");
-// });
+
 

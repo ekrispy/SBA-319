@@ -1,14 +1,13 @@
 const HappyHourMenu = require("../models/HappyHourMenu.js");
 const mongoose = require("mongoose");
-// const RestaurantsDb = require("../Db/restaurants.js");
 
 
 // seed data
 const seedHappyHourMenu = async (req, res) => {
     try {
-        const HappyHourMenuData = require("../Db/HappyHourMenu"); // import restaurants data
-        await HappyHourMenu.deleteMany({}); // delete all restaurants
-      const newHappyHourMenu = await HappyHourMenu.insertMany(HappyHourMenuData); // insert new restaurants
+        const HappyHourMenuData = require("../Db/HappyHourMenu"); // import happyhour data
+        await HappyHourMenu.deleteMany({}); // delete all happyhour
+      const newHappyHourMenu = await HappyHourMenu.insertMany(HappyHourMenuData); // insert new happyhour
       res.status(201).json(newHappyHourMenu);
     } catch (error) {
       res.status(400).json({ error: error.message });

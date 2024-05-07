@@ -1,6 +1,5 @@
 const Restaurants = require("../models/restaurants.js");
 const mongoose = require("mongoose");
-// const RestaurantsDb = require("../Db/restaurants.js");
 
 
 // seed data

@@ -7,7 +7,7 @@ const newHappyHourMenu = new Schema(
       type: String,
       required: true,
       minlength: 3, // minimum length of 3 characters
-      maxlength: 50, // maximum length of 50 characters
+      maxlength: 50, // maximum length of 50 characters // add validation for name
     },
     happyHourMenu: [
       {

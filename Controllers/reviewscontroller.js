@@ -1,8 +1,7 @@
 const Reviews = require("../models/reviews");
 const mongoose = require("mongoose");
 
-//...
-
+// seed data
 const seedReviews = async (req, res) => {
   try {
     const reviewsData = require("../Db/reviews");
@@ -13,7 +12,7 @@ const seedReviews = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
+//get all reviews
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Reviews.find().exec(); // Find all reviews
@@ -22,7 +21,7 @@ const getAllReviews = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
+//get a single review
 const getSingleReview = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -34,7 +33,7 @@ const getSingleReview = async (req, res) => {
   }
   res.status(200).json(review);
 };
-
+//create a new review
 const createNewReview = async (req, res) => {
   try {
     const { restaurantName, reviews } = req.body;
@@ -50,7 +49,7 @@ const createNewReview = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
+//delete a review
 const deleteReview = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -62,7 +61,7 @@ const deleteReview = async (req, res) => {
   }
   res.status(200).json(review);
 };
-
+//update a review
 const updateReview = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
